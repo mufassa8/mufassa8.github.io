@@ -1,28 +1,71 @@
 ---
-title: Getting Started
-author: Cotes Chung
-date: 2019-08-09 20:55:00 +0800
-categories: [Blogging, Tutorial]
+title: Launch Github-blog with Jekyll
+author: Jaeman Lee
+date: 2021.10.01
+categories: [Create Blog]
 tags: [getting started]
 pin: true
 ---
 
 ## Prerequisites
 
-Follow the instructions in the [Jekyll Docs](https://jekyllrb.com/docs/installation/) to complete the installation of `Ruby`, `RubyGems`, `Jekyll`, and `Bundler`.
+Follow the instructions in the [Jekyll Docs](https://jekyllrb.com/docs/installation/) to complete the installation of `Ruby`, `RubyGems`, `Jekyll` and `Bundler`.
 
 ## Installation
+(on linux)
+1. Install Ruby
+- basic install
+    ```bash
+    $ sudo apt-get update
+    $ sudo apt-get install ruby
+    ```
 
-### Creating a New Site
+- Intall with Virtual-env (if got error with basic installation)
+    - install rbenv
+        ```bash
+        $ git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+        $ echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+        $ echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+        $ exec $SHELL
+        #source-url: https://smartbase.tistory.com/44 [SMART BASE]
+        ```
 
-There are two ways to create a new repository for this theme:
+    - install ruby-build
+        ```bash
+        $ git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+        $ echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
+        $ exec $SHELL
+        #source-url: https://smartbase.tistory.com/44 [SMART BASE]
+        ```
+    
+    - install ruby
+        ```bash
+        #check the latest or stable version https://www.ruby-lang.org/en/downloads/releases/
+        $ rbenv install 3.0.2
+        $ rbenv global 3.0.2
+        $ rbenv rehash
+        #source-url: https://smartbase.tistory.com/44 [SMART BASE]
+        ```
+        * rbenv rehash : rearranging hash (required after installation)
 
-- [**Using the Chirpy Starter**](#option-1-using-the-chirpy-starter) - Easy to upgrade, isolates irrelevant project files so you can focus on writing.
-- [**Forking on GitHub**](#option-2-forking-on-github) - Convenient for custom development, but difficult to upgrade. Unless you are familiar with Jekyll and are determined to tweak or contribute to this project, this approach is not recommended.
 
-#### Option 1. Using the Chirpy Starter
+  - check if well-installed
+      ```bash
+      $ ruby -v
+      ```
+      
+2. Install Bundler
+    ```bash
+    $ gem install bundler
+    $ rbenv rehash
+    #source-url: https://smartbase.tistory.com/44 [SMART BASE]
+    ```
 
-Create a new repository from the [**Chirpy Starter**][use-starter] and name it `<GH_USERNAME>.github.io`, where `GH_USERNAME` represents your GitHub username.
+### Creating a Github Blog
+
+#### Option 1. Create new Gihub Repository
+
+name it `<GH_USERNAME>.github.io`, where `GH_USERNAME` represents your GitHub username.
 
 #### Option 2. Forking on GitHub
 
@@ -43,7 +86,7 @@ The above command will:
     - files under `_posts`
     - folder `docs`
 
-2. If the option `--no-gh` is provided, the directory `.github` will be deleted. Otherwise, set up the GitHub Action workflow by removing the extension `.hook` of `.github/workflows/pages-deploy.yml.hook`, and then remove the other files and directories in the folder `.github`.
+2. If the option `--no-gh` is provided, the directory `.github` will be deleted. Otherwise, setup the GitHub Action workflow by removing the extension `.hook` of `.github/workflows/pages-deploy.yml.hook`, and then remove the other files and directories in the folder `.github`.
 
 3. Removes item `Gemfile.lock` from `.gitignore`.
 
@@ -51,7 +94,7 @@ The above command will:
 
 ### Installing Dependencies
 
-Before running for the first time, go to the root directory of your site, and install dependencies as follows:
+Before running for the first time, go the root directory of your site, and install dependencies as follows:
 
 ```console
 $ bundle
@@ -70,7 +113,7 @@ Update the variables of `_config.yml` as needed. Some of them are typical option
 
 ### Customing Stylesheet
 
-If you need to customize the stylesheet, copy the theme's `assets/css/style.scss` to the same path on your Jekyll site, and then add the custom style at the end of the style file.
+If you need to customize stylesheet, copy the theme's `assets/css/style.scss` to the same path on your Jekyll site, and then add the custom style at the end of the style file.
 
 Starting from [`v4.1.0`][chirpy-4.1.0], if you want to overwrite the SASS variables defined in `_sass/addon/variables.scss`, create a new file `_sass/variables-hook.scss` and assign new values to the target variable in it.
 
@@ -95,7 +138,7 @@ After a while, the local service will be published at _<http://127.0.0.1:4000>_.
 
 ### Deployment
 
-Before the deployment begins, check out the file `_config.yml` and make sure the `url` is configured correctly. Furthermore, if you prefer the [**project site**](https://help.github.com/en/github/working-with-github-pages/about-github-pages#types-of-github-pages-sites) and don't use a custom domain, or you want to visit your website with a base URL on a web server other than **GitHub Pages**, remember to change the `baseurl` to your project name that starts with a slash, e.g, `/project-name`.
+Before the deployment begins, checkout the file `_config.yml` and make sure the `url` is configured correctly. Furthermore, if you prefer the [**project site**](https://help.github.com/en/github/working-with-github-pages/about-github-pages#types-of-github-pages-sites) and don't use a custom domain, or you want to visit your website with a base URL on a web server other than **GitHub Pages**, remember to change the `baseurl` to your project name that starting with a slash, e.g, `/project-name`.
 
 Now you can choose ONE of the following methods to deploy your Jekyll site.
 
@@ -109,7 +152,7 @@ Quickly check the files needed for GitHub Actions build:
 
 - Ensure your Jekyll site has file `tools/deploy.sh`. Otherwise, copy it from here to your Jekyll site.
 
-- Furthermore, if you have committed `Gemfile.lock` to the repo, and your runtime system is not Linux, don't forget to update the platform list in the lock file:
+- Furthermore, if you have committed `Gemfile.lock` to the repo, and your runtime system is not Linux, don't forget to update the platform list in the lockfile:
 
   ```console
   $ bundle lock --add-platform x86_64-linux
@@ -153,7 +196,7 @@ Unless you specified the output path, the generated site files will be placed in
 
 It depends on how you use the theme:
 
-- If you are using the theme gem (there will be `gem "jekyll-theme-chirpy"` in the `Gemfile`), editing the `Gemfile` and update the version number of the theme gem, for example:
+- If you are using the theme gem (there will be `gem "jekyll-theme-chirpy"` in the `Gemfile`), editing the `Gemfile` and update the version number of the them gem, for example:
 
     ```diff
   - gem "jekyll-theme-chirpy", "~> 3.2", ">= 3.2.1"
@@ -164,7 +207,7 @@ It depends on how you use the theme:
     And then execute the following command:
 
     ```console
-  $ bundle update jekyll-theme-chirpy
+    $ bundle update jekyll-theme-chirpy
     ```
 
     As the version upgrades, the critical files (for details, see the [Startup Template][starter]) and configuration options will change. Please refer to the [Upgrade Guide](https://github.com/cotes2020/jekyll-theme-chirpy/wiki/Upgrade-Guide) to keep your repo's files in sync with the latest version of the theme.
