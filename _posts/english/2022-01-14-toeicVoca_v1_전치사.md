@@ -1,7 +1,7 @@
 ---
 layout: page
 title: 토익 단어 v1. 전치사모음
-categories: [English, Toeic, vocabulary]
+categories: [English Toeic Voca]
 ---
 
 1. **account for**
