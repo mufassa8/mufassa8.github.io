@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: post
 title: Domain Layer
 source: [https://developer.android.com/jetpack/guide/domain-layer]
 ---

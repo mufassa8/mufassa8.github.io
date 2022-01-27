@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: post
 title:  토익 voca v1. 고난이도 단어 100
 categories: [English Toeic Voca]
 ---

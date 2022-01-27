@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: post
 title: 토익 voca v1. 빈출단어 100
 categories: [English Toeic Voca]
 ---

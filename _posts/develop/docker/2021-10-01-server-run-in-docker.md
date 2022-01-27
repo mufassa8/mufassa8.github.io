@@ -2,7 +2,7 @@
 title: run server with docker
 author: Jaeman Lee
 date: 2021-10-01 14:10:00 +0800
-categories: [Docker, Usage]
+categories: [Docker Usage]
 tags: [run-server]
 render_with_liquid: false
 ---

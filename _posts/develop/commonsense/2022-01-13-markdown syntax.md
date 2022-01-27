@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: post
 title: 마크다운 문법
 categories: [blog config, markdown syntax]
 ---
